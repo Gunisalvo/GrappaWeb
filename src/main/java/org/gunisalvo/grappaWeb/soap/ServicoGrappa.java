@@ -1,6 +1,7 @@
 package org.gunisalvo.grappaWeb.soap;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -31,7 +32,7 @@ public class ServicoGrappa {
 	
 	@WebMethod(operationName="processarPacote")
 	@WebResult(name="grappa", targetNamespace="http://grappa.gunisalvo.org/")
-	public PacoteGrappa postarPacote(PacoteGrappa comando){
+	public PacoteGrappa postarPacote(@WebParam(name="grappa", targetNamespace="http://grappa.gunisalvo.org/") PacoteGrappa comando){
 		return Barramento.processarPacote(comando);
 	}
 
