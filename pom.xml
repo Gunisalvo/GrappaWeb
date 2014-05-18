@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gunisalvo</groupId>
 	<artifactId>grappaWeb</artifactId>
-	<version>0.5.2-alpha</version>
+	<version>0.5.3-alpha</version>
 	<packaging>war</packaging>
 	<name>GrappaWeb</name>
 	<description>Exemplo de sistema WEB utilizando framework Grappa.</description>
@@ -39,6 +39,11 @@
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>3.1.0</version>
 		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.2.7</version>
 		</dependency>
 	</dependencies>
 	<build>

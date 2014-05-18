@@ -46,19 +46,4 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 	public MapaEletrico lerEstadoGpio() {
 		return BarramentoGpio.getBarramento().getEstado();
 	}
-
-	@Override
-	public PacoteGrappa login(String usuario, String senha) {
-		if(testarLogin(usuario,senha)){
-			return Barramento.processarPacote(new PacoteGrappa(5, Conexao.REGISTRADOR, TipoAcao.ESCRITA, "SALA_ABERTA"));
-		}else{
-			return Barramento.processarPacote(new PacoteGrappa(5, Conexao.REGISTRADOR, TipoAcao.ESCRITA, "SALA_FECHADA"));
-		}
-	}
-
-	private boolean testarLogin(String usuario, String senha) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

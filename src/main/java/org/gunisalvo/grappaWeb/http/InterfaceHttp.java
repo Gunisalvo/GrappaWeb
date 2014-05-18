@@ -52,9 +52,4 @@ public interface InterfaceHttp {
 													@FormParam("tipo") TipoAcao tipo,
 													@FormParam("corpo") String corpo);
 
-	@POST
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	@Path("login.xml")
-	public PacoteGrappa login(	@FormParam("usuario") String usuario,@FormParam("senha") String senha);
-
 }

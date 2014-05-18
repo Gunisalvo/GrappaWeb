@@ -23,5 +23,12 @@
         <servlet-name>GrappaWEB</servlet-name>
         <url-pattern>/v1/*</url-pattern>
     </servlet-mapping>
-    
+	<!-- JAX-WS -->
+	<listener>
+		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>GrappaSOAP</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+	</servlet>
 </web-app>
