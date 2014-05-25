@@ -14,7 +14,7 @@ public class ServicoGPIOTeste implements ServicoBarramentoGpio{
 
 	@Override
 	public void processarServico(Integer estadoPino){
-		String resultado = Barramento.processarPacote(new PacoteGrappa(99,Conexao.REGISTRADOR,TipoAcao.LEITURA,null)).getCorpo();
+		String resultado = (String) Barramento.processarPacote(new PacoteGrappa(99,Conexao.REGISTRADOR,TipoAcao.LEITURA,null)).getCorpo();
 		Integer numero = resultado == null ? 1 : Integer.parseInt(resultado);
 		numero += 1;
 		Grappa.getAplicacao().log("Evento pino - estado : " + estadoPino, NivelLog.INFO);

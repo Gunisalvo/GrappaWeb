@@ -23,7 +23,7 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 	
 	@Override
 	public RegistradoresGrappa lerMapaRegistradores() {
-		return BarramentoRegistradores.getBarramento().getRegistradores();
+		return BarramentoRegistradores.getBarramento().getEstado();
 	}
 	
 	@Override

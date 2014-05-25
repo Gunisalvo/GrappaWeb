@@ -21,7 +21,7 @@ public class ServicoGrappa {
 	@WebMethod(operationName="mapaRegistradores")
 	@WebResult(name="registradores",targetNamespace="http://grappa.gunisalvo.org/")
 	public RegistradoresGrappa lerMapaRegistradores(){
-		return BarramentoRegistradores.getBarramento().getRegistradores();
+		return BarramentoRegistradores.getBarramento().getEstado();
 	}
 	
 	@WebMethod(operationName="mapaGPIO")
