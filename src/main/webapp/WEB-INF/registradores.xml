@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuracao-registradores>
 	<celulas>
-		<celula-texto>
+		<celula-tipada>
 			<posicao>99</posicao>
-			<valor>0</valor>
-		</celula-texto>
-		<celula-texto>
+			<java.lang.Integer>0</java.lang.Integer>
+		</celula-tipada>
+		<celula>
 			<posicao>0</posicao>
 			<valor>Regitradores Teste</valor>
-		</celula-texto>
+		</celula>
 	</celulas>
 </configuracao-registradores>
