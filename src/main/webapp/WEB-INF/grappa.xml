@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuracao-grappa>
 	<pacote-servico>org.gunisalvo.grappaWeb.servico</pacote-servico>
-	<padrao>OUTPUT_DIGITAL</padrao>
+	<padrao>SAIDA</padrao>
 	<pino-monitor>
 		0
 	</pino-monitor>
@@ -14,7 +14,7 @@
 	<pinos>
 		<pino>
 			<posicao>7</posicao>
-			<tipo>INPUT_DIGITAL</tipo>
+			<tipo>ENTRADA</tipo>
 		</pino>
 	</pinos>
 </configuracao-grappa>

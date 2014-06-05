@@ -20,7 +20,6 @@ public class ContextoWeb implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent evento) {
 		ServletContext contexto = evento.getServletContext();
 		Grappa.construir(contexto.getRealPath(""));
-		
 	}
 
 }

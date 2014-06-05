@@ -3,7 +3,6 @@ package org.gunisalvo.grappaWeb.http.bean;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.gunisalvo.grappa.Barramento;
 import org.gunisalvo.grappa.Grappa;
 import org.gunisalvo.grappa.gpio.BarramentoGpio;
 import org.gunisalvo.grappa.modelo.MapaEletrico;
@@ -28,7 +27,7 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 	
 	@Override
 	public PacoteGrappa postarPacote(PacoteGrappa requisicao) {
-		return Barramento.processarPacote(requisicao);
+		return Grappa.processarPacote(requisicao);
 	}
 
 	@Override

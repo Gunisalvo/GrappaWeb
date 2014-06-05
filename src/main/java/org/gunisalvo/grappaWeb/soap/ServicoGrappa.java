@@ -7,7 +7,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 
-import org.gunisalvo.grappa.Barramento;
+import org.gunisalvo.grappa.Grappa;
 import org.gunisalvo.grappa.gpio.BarramentoGpio;
 import org.gunisalvo.grappa.modelo.MapaEletrico;
 import org.gunisalvo.grappa.modelo.PacoteGrappa;
@@ -33,7 +33,7 @@ public class ServicoGrappa {
 	@WebMethod(operationName="processarPacote")
 	@WebResult(name="grappa", targetNamespace="http://grappa.gunisalvo.org/")
 	public PacoteGrappa postarPacote(@WebParam(name="grappa", targetNamespace="http://grappa.gunisalvo.org/") PacoteGrappa comando){
-		return Barramento.processarPacote(comando);
+		return Grappa.processarPacote(comando);
 	}
 
 }
