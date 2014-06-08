@@ -24,7 +24,7 @@
 			<version>2.3.5.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gunisalvo</groupId>
+			<groupId>org.entrementes</groupId>
 			<artifactId>grappa</artifactId>
 			<version>0.5.2-alpha</version>
 		</dependency>

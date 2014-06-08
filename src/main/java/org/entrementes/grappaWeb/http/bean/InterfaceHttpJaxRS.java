@@ -1,23 +1,23 @@
-package org.gunisalvo.grappaWeb.http.bean;
+package org.entrementes.grappaWeb.http.bean;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.gunisalvo.grappa.Grappa;
-import org.gunisalvo.grappa.gpio.BarramentoGpio;
-import org.gunisalvo.grappa.modelo.MapaEletrico;
-import org.gunisalvo.grappa.modelo.PacoteGrappa;
-import org.gunisalvo.grappa.modelo.PacoteGrappa.Conexao;
-import org.gunisalvo.grappa.modelo.PacoteGrappa.TipoAcao;
-import org.gunisalvo.grappa.modelo.RegistradoresGrappa;
-import org.gunisalvo.grappa.registradores.BarramentoRegistradores;
-import org.gunisalvo.grappaWeb.http.InterfaceHttp;
+import org.entrementes.grappa.ContextoGrappa;
+import org.entrementes.grappa.gpio.BarramentoGpio;
+import org.entrementes.grappa.modelo.MapaEletrico;
+import org.entrementes.grappa.modelo.InstrucaoGrappa;
+import org.entrementes.grappa.modelo.InstrucaoGrappa.Conexao;
+import org.entrementes.grappa.modelo.InstrucaoGrappa.TipoAcao;
+import org.entrementes.grappa.modelo.RegistradoresGrappa;
+import org.entrementes.grappa.registradores.BarramentoRegistradores;
+import org.entrementes.grappaWeb.http.InterfaceHttp;
 
 public class InterfaceHttpJaxRS implements InterfaceHttp{
 	
 	@Override
 	public Response lerLog() {
-		return Response.ok(Grappa.getAplicacao().getLog(), MediaType.TEXT_PLAIN).build();
+		return Response.ok(ContextoGrappa.getAplicacao().getLog(), MediaType.TEXT_PLAIN).build();
 	}
 	
 	@Override
@@ -26,13 +26,13 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 	}
 	
 	@Override
-	public PacoteGrappa postarPacote(PacoteGrappa requisicao) {
-		return Grappa.processarPacote(requisicao);
+	public InstrucaoGrappa postarPacote(InstrucaoGrappa requisicao) {
+		return ContextoGrappa.processarInstrucao(requisicao);
 	}
 
 	@Override
-	public PacoteGrappa postarPacotePorFormulario( Integer endereco, Conexao conexao, TipoAcao tipo, String corpo) {
-		return postarPacote(new PacoteGrappa(endereco, conexao, tipo, corpo));
+	public InstrucaoGrappa postarPacotePorFormulario( Integer endereco, Conexao conexao, TipoAcao tipo, String corpo) {
+		return postarPacote(new InstrucaoGrappa(endereco, conexao, tipo, corpo));
 	}
 
 	@Override

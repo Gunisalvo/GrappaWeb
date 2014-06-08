@@ -2,11 +2,11 @@
 <configuracao-registradores>
 	<celulas>
 		<celula-tipada>
-			<posicao>99</posicao>
-			<java.lang.Integer>0</java.lang.Integer>
+			<endereco>99</endereco>
+			<valor tipo="java.lang.Integer">0</valor>
 		</celula-tipada>
 		<celula>
-			<posicao>0</posicao>
+			<endereco>0</endereco>
 			<valor>Regitradores Teste</valor>
 		</celula>
 	</celulas>
