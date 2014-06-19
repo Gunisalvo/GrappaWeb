@@ -22,18 +22,34 @@ public class DispositivoGrappaWeb {
 	@Hardware
 	private Raspberry pi;
 	
-	private Integer contadorBotao = 0;
+	private Boolean sinalA = false;
 	
-	@ObservadorGpio(endereco = 7)
-	public void processarServico(Integer estadoPino){
+	private Boolean sinalB = false;
+	
+	private Integer ativacoes = 0;
+	
+	@ObservadorGpio(endereco = 4)
+	public void processarSinalA(Integer estadoPino){
 		if(estadoPino.intValue() == 1){
-			this.contadorBotao += 1;
+			this.sinalA = !this.sinalA;
 		}
 		
-		if(this.contadorBotao.intValue() % 5 == 0){
-			this.pi.processarInstrucao(new InstrucaoLogica().endereco(4).escrever(1));
-		}else{
-			this.pi.processarInstrucao(new InstrucaoLogica().endereco(4).escrever(0));
+		checarAtivacao();
+	}
+	
+	@ObservadorGpio(endereco = 5)
+	public void processarSinalB(Integer estadoPino){
+		if(estadoPino.intValue() == 1){
+			this.sinalB = !sinalB;
+		}
+		
+		checarAtivacao();
+	}
+
+	private void checarAtivacao() {
+		if(this.sinalA && this.sinalB){
+			this.ativacoes += 1;
+			this.pi.processarInstrucao(new InstrucaoLogica().endereco(2).escrever(2));
 		}
 	}
 

@@ -9,11 +9,19 @@
 		0
 	</pino-inicial>
 	<pino-final>
-		20
+		5
 	</pino-final>
 	<pinos>
 		<pino>
-			<endereco>7</endereco>
+			<endereco>3</endereco>
+			<tipo>ENTRADA</tipo>
+		</pino>
+		<pino>
+			<endereco>4</endereco>
+			<tipo>ENTRADA</tipo>
+		</pino>
+		<pino>
+			<endereco>5</endereco>
 			<tipo>ENTRADA</tipo>
 		</pino>
 	</pinos>
