@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.entrementes</groupId>
 	<artifactId>grappaWeb</artifactId>
-	<version>0.5.3-alpha</version>
+	<version>0.5.5-alpha</version>
 	<packaging>war</packaging>
 	<name>GrappaWeb</name>
 	<description>Exemplo de sistema WEB utilizando framework Grappa.</description>
@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>org.entrementes</groupId>
 			<artifactId>grappa</artifactId>
-			<version>0.5.2-alpha</version>
+			<version>0.5.5-alpha</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

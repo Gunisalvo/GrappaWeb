@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuracao-grappa>
-	<pacote-servico>org.gunisalvo.grappaWeb.servico</pacote-servico>
-	<padrao>SAIDA</padrao>
+	<pacote-servico>org.entrementes.grappaWeb.dispositivo</pacote-servico>
+	<padrao-pino>SAIDA</padrao-pino>
 	<pino-monitor>
 		0
 	</pino-monitor>
