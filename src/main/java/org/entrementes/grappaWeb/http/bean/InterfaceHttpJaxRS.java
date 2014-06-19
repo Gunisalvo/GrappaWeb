@@ -1,5 +1,8 @@
 package org.entrementes.grappaWeb.http.bean;
 
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import org.entrementes.grappa.modelo.InstrucaoGrappa;
 import org.entrementes.grappa.modelo.InstrucaoGrappa.Acao;
 import org.entrementes.grappa.modelo.InstrucaoGrappa.Formato;
@@ -32,5 +35,10 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 														Integer corpo) {
 		InstrucaoGrappa requisicao = new InstrucaoGrappa(endereco, formato, tipo, corpo);
 		return postarPacote(requisicao);
+	}
+
+	@Override
+	public Response lerLog() {
+		return Response.ok(GrappaWeb.getConteudoLog(), MediaType.TEXT_PLAIN).build();
 	}
 }
