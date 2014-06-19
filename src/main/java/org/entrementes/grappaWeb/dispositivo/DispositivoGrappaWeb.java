@@ -12,6 +12,7 @@ import org.entrementes.grappa.marcacao.ObservadorGpio;
 import org.entrementes.grappa.modelo.InstrucaoGrappa;
 import org.entrementes.grappa.modelo.MapaEletrico;
 import org.entrementes.grappa.modelo.instrucao.InstrucaoLogica;
+import org.entrementes.grappaWeb.GrappaWeb;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="dispositivo")
@@ -30,8 +31,11 @@ public class DispositivoGrappaWeb {
 	
 	@ObservadorGpio(endereco = 4)
 	public void processarSinalA(Integer estadoPino){
+		GrappaWeb.info("processando sinal A: "+ estadoPino);
+		
 		if(estadoPino.intValue() == 1){
 			this.sinalA = !this.sinalA;
+			GrappaWeb.info("estado: "+ this.sinalA);
 		}
 		
 		checarAtivacao();
@@ -39,8 +43,11 @@ public class DispositivoGrappaWeb {
 	
 	@ObservadorGpio(endereco = 5)
 	public void processarSinalB(Integer estadoPino){
+		GrappaWeb.info("processando sinal B: "+ estadoPino);
+		
 		if(estadoPino.intValue() == 1){
 			this.sinalB = !sinalB;
+			GrappaWeb.info("estado: "+ this.sinalB);
 		}
 		
 		checarAtivacao();
@@ -49,7 +56,8 @@ public class DispositivoGrappaWeb {
 	private void checarAtivacao() {
 		if(this.sinalA && this.sinalB){
 			this.ativacoes += 1;
-			this.pi.processarInstrucao(new InstrucaoLogica().endereco(2).escrever(2));
+			InstrucaoGrappa resposta = this.pi.processarInstrucao(new InstrucaoLogica().endereco(2).escrever(2));
+			GrappaWeb.info("ativacao: " + this.ativacoes + " - " + resposta.getResultado() + ", " + resposta.getCorpo());
 		}
 	}
 
