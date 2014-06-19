@@ -36,9 +36,9 @@ public class DispositivoGrappaWeb {
 		if(estadoPino.intValue() == 1){
 			this.sinalA = !this.sinalA;
 			GrappaWeb.info("estado: "+ this.sinalA);
+			checarAtivacao();
 		}
 		
-		checarAtivacao();
 	}
 	
 	@ObservadorGpio(endereco = 5)
@@ -48,9 +48,9 @@ public class DispositivoGrappaWeb {
 		if(estadoPino.intValue() == 1){
 			this.sinalB = !sinalB;
 			GrappaWeb.info("estado: "+ this.sinalB);
+			checarAtivacao();
 		}
 		
-		checarAtivacao();
 	}
 
 	private void checarAtivacao() {
