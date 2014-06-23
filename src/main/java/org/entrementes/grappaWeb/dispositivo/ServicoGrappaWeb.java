@@ -1,23 +1,24 @@
 package org.entrementes.grappaWeb.dispositivo;
 
-import org.entrementes.grappa.gpio.Raspberry;
-import org.entrementes.grappa.gpio.ServicoGpio;
-import org.entrementes.grappa.marcacao.Hardware;
-import org.entrementes.grappa.marcacao.ObservadorGpio;
-import org.entrementes.grappa.modelo.InstrucaoGrappa;
-import org.entrementes.grappa.modelo.instrucao.InstrucaoLogica;
 import org.entrementes.grappaWeb.GrappaWeb;
 
-@ObservadorGpio(endereco=3)
-public class ServicoGrappaWeb implements ServicoGpio{
+import br.com.caelum.grappa.annotation.Hardware;
+import br.com.caelum.grappa.annotation.PinListener;
+import br.com.caelum.grappa.model.GrappaInstruction;
+import br.com.caelum.grappa.model.builder.LogicInstruction;
+import br.com.caelum.grappa.pin.PhysicalDevice;
+import br.com.caelum.grappa.pin.PinService;
+
+@PinListener(addresses=3)
+public class ServicoGrappaWeb implements PinService{
 
 	@Hardware
-	private Raspberry pi;
+	private PhysicalDevice pi;
 	
 	private Integer contador = 0;
 	
 	@Override
-	public void processarServico(Integer estadoPino) {
+	public void processEvent(Integer estadoPino) {
 		GrappaWeb.info("processando: "+ estadoPino);
 		
 		if(estadoPino.intValue() == 1){
@@ -25,8 +26,8 @@ public class ServicoGrappaWeb implements ServicoGpio{
 			GrappaWeb.info("contador incrementado: "+ this.contador);
 			
 			if(this.contador.intValue() % 2 == 0){
-				InstrucaoGrappa resposta = pi.processarInstrucao(new InstrucaoLogica().endereco(1).escrever(2));
-				GrappaWeb.info("estado pino: " + resposta.getResultado() + ", " + resposta.getCorpo());
+				GrappaInstruction resposta = pi.processInstruction(new LogicInstruction().address(1).write(2));
+				GrappaWeb.info("estado pino: " + resposta.getResult() + ", " + resposta.getBody());
 			}
 		}
 	}

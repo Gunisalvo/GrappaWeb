@@ -15,22 +15,22 @@
 		<h1>Grappa: Console WEB</h1>
 		<form id="console" action="v1/resultado-instrucao.xml" method="post">
 			<label class="item-menu label">Endereço:</label>
-			<input id="endereco" class="item-menu campo" type="text" name="endereco"/>
+			<input id="endereco" class="item-menu campo" type="text" name="address"/>
 			<br/>
 			<label class="item-menu label">Ação:</label>
-			<select id="acao" class="item-menu campo" name="acao">
-				<option value="LEITURA">Leitura</option>
-				<option value="ESCRITA">Escrita</option>
+			<select id="acao" class="item-menu campo" name="action">
+				<option value="READ">Leitura</option>
+				<option value="WRITE">Escrita</option>
 			</select>
 			<br/>
 			<label class="item-menu label">Formato:</label>
-			<select id="formato" class="item-menu campo" name="formato">
-				<option value="LOGICO">Lógico</option>
-				<option value="DISCRETIZADO">Discretizado</option>
+			<select id="formato" class="item-menu campo" name="format">
+				<option value="LOGIC">Lógico</option>
+				<option value="DISCRETE">Discretizado</option>
 			</select>
 			<br/>
 			<label class="item-menu label">Corpo:</label>
-			<input id="corpo" class="item-menu campo" type="text" name="corpo"/>
+			<input id="corpo" class="item-menu campo" type="text" name="body"/>
 			<br/>
 			<input id="ajax"  type="checkbox" name="ajax" value="ajax">Ajax<br/>
 			<input class="item-menu meio-botao" type="reset" value="Limpar"/>

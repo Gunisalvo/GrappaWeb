@@ -9,11 +9,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.entrementes.grappa.modelo.InstrucaoGrappa;
-import org.entrementes.grappa.modelo.InstrucaoGrappa.Acao;
-import org.entrementes.grappa.modelo.InstrucaoGrappa.Formato;
-import org.entrementes.grappa.modelo.MapaEletrico;
 import org.entrementes.grappaWeb.dispositivo.DispositivoGrappaWeb;
+
+import br.com.caelum.grappa.model.GrappaInstruction;
+import br.com.caelum.grappa.model.GrappaInstruction.Action;
+import br.com.caelum.grappa.model.GrappaPin.PinFormat;
+import br.com.caelum.grappa.model.PhysicalDeviceState;
 
 @Path("/")
 public interface InterfaceHttp {
@@ -26,7 +27,7 @@ public interface InterfaceHttp {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Path("gpio")
-	public MapaEletrico lerEstadoGpio();
+	public PhysicalDeviceState lerEstadoGpio();
 	
 	@GET
 	@Produces({MediaType.TEXT_PLAIN})
@@ -37,14 +38,14 @@ public interface InterfaceHttp {
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Path("resultado-instrucao")
-	public InstrucaoGrappa postarPacote(InstrucaoGrappa comando);
+	public GrappaInstruction postarPacote(GrappaInstruction comando);
 	
 	@POST
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Path("resultado-instrucao.xml")
-	public InstrucaoGrappa postarPacotePorFormulario(	@FormParam("endereco") Integer endereco,
-														@FormParam("formato") Formato formato, 
-														@FormParam("acao") Acao tipo,
-														@FormParam("corpo") Integer corpo);
+	public GrappaInstruction postarPacotePorFormulario(	@FormParam("address") Integer endereco,
+														@FormParam("format") PinFormat formato, 
+														@FormParam("action") Action tipo,
+														@FormParam("body") GrappaInstructionBody corpo);
 
 }

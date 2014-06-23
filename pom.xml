@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.entrementes</groupId>
+	<groupId>br.com.caelum</groupId>
 	<artifactId>grappaWeb</artifactId>
-	<version>0.5.5-alpha</version>
+	<version>0.6.3-alpha</version>
 	<packaging>war</packaging>
 	<name>GrappaWeb</name>
 	<description>Exemplo de sistema WEB utilizando framework Grappa.</description>
@@ -24,9 +24,9 @@
 			<version>2.3.5.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.entrementes</groupId>
+			<groupId>br.com.caelum</groupId>
 			<artifactId>grappa</artifactId>
-			<version>0.5.5-alpha</version>
+			<version>0.6.3</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

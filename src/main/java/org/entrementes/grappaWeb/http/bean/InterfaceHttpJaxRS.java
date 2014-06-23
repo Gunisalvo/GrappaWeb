@@ -3,18 +3,20 @@ package org.entrementes.grappaWeb.http.bean;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.entrementes.grappa.modelo.InstrucaoGrappa;
-import org.entrementes.grappa.modelo.InstrucaoGrappa.Acao;
-import org.entrementes.grappa.modelo.InstrucaoGrappa.Formato;
-import org.entrementes.grappa.modelo.MapaEletrico;
 import org.entrementes.grappaWeb.GrappaWeb;
 import org.entrementes.grappaWeb.dispositivo.DispositivoGrappaWeb;
+import org.entrementes.grappaWeb.http.GrappaInstructionBody;
 import org.entrementes.grappaWeb.http.InterfaceHttp;
+
+import br.com.caelum.grappa.model.GrappaInstruction;
+import br.com.caelum.grappa.model.GrappaInstruction.Action;
+import br.com.caelum.grappa.model.GrappaPin.PinFormat;
+import br.com.caelum.grappa.model.PhysicalDeviceState;
 
 public class InterfaceHttpJaxRS implements InterfaceHttp{
 	
 	@Override
-	public MapaEletrico lerEstadoGpio() {
+	public PhysicalDeviceState lerEstadoGpio() {
 		return GrappaWeb.carregarDispositivo().getEstado();
 	}
 
@@ -24,16 +26,16 @@ public class InterfaceHttpJaxRS implements InterfaceHttp{
 	}
 
 	@Override
-	public InstrucaoGrappa postarPacote(InstrucaoGrappa comando) {
+	public GrappaInstruction postarPacote(GrappaInstruction comando) {
 		return GrappaWeb.carregarDispositivo().processarInstrucao(comando);
 	}
 
 	@Override
-	public InstrucaoGrappa postarPacotePorFormulario(	Integer endereco,
-														Formato formato, 
-														Acao tipo, 
-														Integer corpo) {
-		InstrucaoGrappa requisicao = new InstrucaoGrappa(endereco, formato, tipo, corpo);
+	public GrappaInstruction postarPacotePorFormulario(	Integer endereco,
+														PinFormat formato, 
+														Action tipo, 
+														GrappaInstructionBody corpo) {
+		GrappaInstruction requisicao = new GrappaInstruction(endereco, formato, tipo, corpo.getValue());
 		return postarPacote(requisicao);
 	}
 

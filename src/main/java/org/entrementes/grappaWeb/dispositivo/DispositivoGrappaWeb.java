@@ -5,23 +5,24 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.entrementes.grappa.gpio.Raspberry;
-import org.entrementes.grappa.marcacao.Dispositivo;
-import org.entrementes.grappa.marcacao.Hardware;
-import org.entrementes.grappa.marcacao.ObservadorGpio;
-import org.entrementes.grappa.modelo.InstrucaoGrappa;
-import org.entrementes.grappa.modelo.MapaEletrico;
-import org.entrementes.grappa.modelo.instrucao.InstrucaoLogica;
 import org.entrementes.grappaWeb.GrappaWeb;
+
+import br.com.caelum.grappa.annotation.Device;
+import br.com.caelum.grappa.annotation.Hardware;
+import br.com.caelum.grappa.annotation.PinListener;
+import br.com.caelum.grappa.model.GrappaInstruction;
+import br.com.caelum.grappa.model.PhysicalDeviceState;
+import br.com.caelum.grappa.model.builder.LogicInstruction;
+import br.com.caelum.grappa.pin.PhysicalDevice;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="dispositivo")
-@Dispositivo(nome="dispositivo")
+@Device(nome="dispositivo")
 public class DispositivoGrappaWeb {
 
 	@XmlTransient
 	@Hardware
-	private Raspberry pi;
+	private PhysicalDevice pi;
 	
 	private Boolean sinalA = false;
 	
@@ -29,7 +30,7 @@ public class DispositivoGrappaWeb {
 	
 	private Integer ativacoes = 0;
 	
-	@ObservadorGpio(endereco = 4)
+	@PinListener(addresses = 4)
 	public void processarSinalA(Integer estadoPino){
 		GrappaWeb.info("processando sinal A: "+ estadoPino);
 		
@@ -41,7 +42,7 @@ public class DispositivoGrappaWeb {
 		
 	}
 	
-	@ObservadorGpio(endereco = 5)
+	@PinListener(addresses = 5)
 	public void processarSinalB(Integer estadoPino){
 		GrappaWeb.info("processando sinal B: "+ estadoPino);
 		
@@ -56,16 +57,16 @@ public class DispositivoGrappaWeb {
 	private void checarAtivacao() {
 		if(this.sinalA && this.sinalB){
 			this.ativacoes += 1;
-			InstrucaoGrappa resposta = this.pi.processarInstrucao(new InstrucaoLogica().endereco(2).escrever(2));
-			GrappaWeb.info("ativacao: " + this.ativacoes + " - " + resposta.getResultado() + ", " + resposta.getCorpo());
+			GrappaInstruction resposta = this.pi.processInstruction(new LogicInstruction().address(2).write(2));
+			GrappaWeb.info("ativacao: " + this.ativacoes + " - " + resposta.getResult() + ", " + resposta.getBody());
 		}
 	}
 
-	public MapaEletrico getEstado() {
-		return pi.getEstado();
+	public PhysicalDeviceState getEstado() {
+		return pi.getState();
 	}
 
-	public InstrucaoGrappa processarInstrucao(InstrucaoGrappa comando) {
-		return this.pi.processarInstrucao(comando);
+	public GrappaInstruction processarInstrucao(GrappaInstruction comando) {
+		return this.pi.processInstruction(comando);
 	}
 }
